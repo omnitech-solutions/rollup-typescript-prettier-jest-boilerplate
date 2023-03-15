@@ -1,0 +1,136 @@
+{
+  "name": "@oc-tech/lodash-ext",
+  "private": false,
+  "version": "0.0.4",
+  "description": "Enhances lodash experience catering for real world functionality",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es5.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/omnitech-solutions/lodash-ext.git"
+  },
+  "scripts": {
+    "prepare": "rm -rf .husky/_ && husky install",
+    "lint": "eslint --ext .js,.ts src/",
+    "lint:fix": "eslint --ext .js,.ts --fix src/",
+    "start": "rollup -c rollup.config.js -w",
+    "docs": "typedoc --out docs --theme minimal src",
+    "prebuild": "rimraf dist",
+    "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "release": "npm run release:patch",
+    "release:patch": "npm run build && standard-version --release-as patch",
+    "release:minor": "npm run build && standard-version --release-as minor",
+    "release:major": "npm run build && standard-version --release-as major",
+    "jest": "npx jest --testTimeout 3000 --cache  --colors",
+    "test": "yarn run jest --coverage",
+    "test:watch": "yarn run jest --coverage --watch",
+    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "deploy": "rimraf docs/ && npm run docs",
+    "prettier": "prettier --config prettier.config.js --cache --cache-strategy metadata src/**/*.ts"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "yarn run prettier --write",
+      "yarn run lint:fix"
+    ]
+  },
+  "keywords": [
+    "lodash",
+    "library",
+    "typescript",
+    "rollup"
+  ],
+  "author": "Desmond O'Leary <desoleary@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bignumber.js": "^9.1.1",
+    "chai-jest": "^1.0.3",
+    "deep-object-diff": "^1.1.9",
+    "dot-object": "^2.1.4",
+    "fast-deep-equal": "^3.1.3",
+    "lodash": "^4.17.21",
+    "numeral": "^2.0.6",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "lodash": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@cypress/sinon-chai": "^2.9.1",
+    "@optimize-lodash/rollup-plugin": "^4.0.3",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@types/bignumber.js": "^5.0.0",
+    "@types/chai": "^4.3.4",
+    "@types/chai-arrays": "^2.0.0",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/chai-datetime": "^0.0.37",
+    "@types/deep-equal-in-any-order": "^1.0.1",
+    "@types/dirty-chai": "^2.0.2",
+    "@types/dot-object": "^2.1.2",
+    "@types/jest": "^29.4.1",
+    "@types/lodash": "^4.14.191",
+    "@types/numeral": "^2.0.2",
+    "@types/sinon": "^10.0.13",
+    "@types/sinon-chai": "^3.2.9",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "chai": "^4.3.7",
+    "chai-arrays": "^2.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-datetime": "^1.8.0",
+    "chai-jest-diff": "^1.0.2",
+    "chai-jest-mocks": "^1.2.4",
+    "chai-shallowly": "^1.0.0",
+    "chai-sorted": "^0.2.0",
+    "chai-url": "^1.0.4",
+    "deep-equal-in-any-order": "^2.0.5",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-chai-expect": "^3.0.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-eslint-plugin": "^5.0.8",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "expect": "^29.5.0",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "rimraf": "^4.3.1",
+    "rollup": "^3.18.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "sinon": "^15.0.2",
+    "sinon-chai": "^3.7.0",
+    "standard-version": "^9.5.0",
+    "ts-jest": "^29.0.5",
+    "typedoc": "^0.23.26"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/omnitech-solutions/lodash-ext/issues"
+  },
+  "homepage": "https://github.com/omnitech-solutions/lodash-ext#readme",
+  "directories": {
+    "test": "test"
+  }
+}
